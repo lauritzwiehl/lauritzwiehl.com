@@ -1,0 +1,201 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  background: transparent;
+  font-family: "neue-haas-grotesk-display", sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.section {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.HOMEPAGE_CONTAINER {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#HOMEPAGE_VIDEO {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  transition: filter 0.2s linear, opacity 0.2s linear;
+  z-index: -2;
+}
+
+#HEADER_TEXT,
+.FOOTER_TEXT {
+  position: fixed;
+  left: 18px;
+  z-index: 10001;
+  transition: color 0.3s linear;
+  pointer-events: none;
+}
+
+#HEADER_TEXT {
+  top: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.FOOTER_TEXT {
+  bottom: 12px;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.transition-section {
+  background: transparent;
+  color: black;
+}
+
+.portfolio-section {
+  background: white;
+  position: relative;
+  z-index: 3;
+}
+
+.portfolio-grid-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 60px 5vw;  animation: fadeInGrid 1.2s ease forwards;
+  opacity: 0;
+  animation-delay: 0.3s;
+  max-width: 1200px;
+  width: 90vw;
+}
+
+.portfolio-grid {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 48px;
+}
+
+@keyframes fadeInGrid {
+  to {
+    opacity: 1;
+  }
+}
+
+.project {
+  flex: 1 1 30%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+.rectangle {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  transition: all 0.4s ease;
+}
+
+.project:hover .rectangle {
+  transform: scale(1.12);
+  background: #d0d0d0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.label {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .label {
+    font-size: 1rem;
+  }
+
+  .portfolio-grid {
+    flex-direction: column;
+  }
+
+  .project {
+    max-width: 90%;
+  }
+}
+
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #e0e0e0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.expanded-rectangle {
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+@media (min-width: 600px) {
+  .portfolio-grid {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    padding: 40px 20px;
+    flex-wrap: nowrap;
+  }
+
+  .project {
+    flex: 1 1 0;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 599px) {
+  .portfolio-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project {
+    width: 80%;
+  }
+
+  .label {
+    font-size: 1.5rem;
+  }
+}
